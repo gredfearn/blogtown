@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --inline --content-base .",
+    "start": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Grant Redfearn",
@@ -11,6 +11,7 @@
   "dependencies": {
     "babel-polyfill": "^6.16.0",
     "babel-runtime": "^6.18.0",
+    "browserify-middleware": "^7.1.0",
     "log": "^1.4.0",
     "mongoose": "^4.8.5",
     "react": "^15.3.2",

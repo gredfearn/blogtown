@@ -2,7 +2,7 @@
 const express = require('express');
 const chalk = require('chalk');
 const browserify = require('browserify-middleware')
-const Path = require('path');
+const path = require('path');
 const config = require('../config/config');
 const Log = require('log');
 const log = new Log(config.LOG_LEVEL);
@@ -18,35 +18,42 @@ const serverOptions = {
 **********************/
 const routes = express.Router();
 
-var bundle = Path.resolve(__dirname, '../dist');
+var bundle = path.resolve(__dirname, '../dist');
+routes.use(express.static(bundle));
+
 routes.get('/', function (req, res) {
   res.sendFile(bundle + '/index.html');
 });
 
+routes.get('/bundle.js', function (req, res) {
+  res.sendFile(bundle + '/bundle.js');
+});
+
+
 // Static assets (html, etc.)
-const assetFolder = Path.resolve(__dirname, '../client/assets')
-routes.use(express.static(assetFolder))
-
-
-
+// const assetFolder = path.resolve(__dirname, '../dist')
+// console.log('assetFolder', assetFolder)
 
 /*********************\
 * SERVER SIDE ROUTING *
 **********************/
 const app = express(serverOptions);
 
-const generateBlogRoutes = require('./routes/blog.routes');
+// app.get('/', function(req, res) {
+//   res.sendFile(path.resolve(__dirname, '/dist/index.html'))
+// })
+
+const generateBlogRoutes = require('./routes/blog.route');
 generateBlogRoutes(app);
 
 //todo: not sure
-// app.use('/', routes)
+app.use('/', routes)
 
 app.use(function(req, res, next) {
-  log(req.method + '' + req.url)
+  log.alert(req.method + ' ' + req.url)
 });
 
-
 app.listen(port, function () {
-  log(chalk.green('Blogtown listening at '+${port}));
+  log.alert(chalk.green('Blogtown listening at '+port));
 });
 

@@ -5,7 +5,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        loader: 'babel-loader',
+        loader: ['babel-loader'],
       //  skip any files outside of projects 'src' directory
         include: [
           path.resolve(__dirname, 'src/client'),
@@ -22,12 +22,13 @@ module.exports = {
   },
   output: {
     path: __dirname + '/dist',
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/'
   },
   entry: [
     './src/client/index.js'
   ],
   watch: true,
   colors: true,
-  progress: true
+  progress: false
 };

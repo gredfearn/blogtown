@@ -1,4 +1,4 @@
 node_modules
 .DS_Store
 .idea/
-bundle.js
+npm-debug.log
