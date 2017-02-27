@@ -7,6 +7,7 @@ const config = require('../config/config');
 const Log = require('log');
 const log = new Log(config.LOG_LEVEL);
 const port = config.SERVER_PORT;
+const db = require('../lib/db');
 
 const serverOptions = {
   name: 'Blog:GrantRedfearn',
@@ -29,25 +30,19 @@ routes.get('/bundle.js', function (req, res) {
   res.sendFile(bundle + '/bundle.js');
 });
 
+/********************\
+*  DATABASE CONFIG   *
+*********************/
 
-// Static assets (html, etc.)
-// const assetFolder = path.resolve(__dirname, '../dist')
-// console.log('assetFolder', assetFolder)
 
 /*********************\
 * SERVER SIDE ROUTING *
 **********************/
 const app = express(serverOptions);
-
-// app.get('/', function(req, res) {
-//   res.sendFile(path.resolve(__dirname, '/dist/index.html'))
-// })
+app.use('/', routes)
 
 const generateBlogRoutes = require('./routes/blog.route');
 generateBlogRoutes(app);
-
-//todo: not sure
-app.use('/', routes)
 
 app.use(function(req, res, next) {
   log.alert(req.method + ' ' + req.url)
