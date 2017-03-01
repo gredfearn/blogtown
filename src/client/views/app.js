@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import Paragraph from '../blurbs/paragraph';
-import Navbar from '../navigation/navbar';
-import MainHeader from '../headers/main';
+import Paragraph from '../components/blurbs/paragraph';
+import Navbar from '../components/navigation/navbar';
+import MainHeader from '../components/headers/main';
 // import Avatar from '../images/avatar';
 
 export default class App extends Component {

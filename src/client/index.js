@@ -1,9 +1,9 @@
 import React from 'react';
 import {render} from 'react-dom';
 import { Router, Route, hashHistory } from 'react-router';
-import App from './components/pages/app';
-import Blog from './components/pages/blog';
-import About from './components/pages/About';
+import App from './views/app';
+import Blog from './views/blog';
+import About from './views/about';
 
 render((
   <Router history={hashHistory}>

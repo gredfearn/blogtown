@@ -2,8 +2,8 @@
  * Created by Grant on 10/28/16.
  */
 import React, {Component} from 'react';
-import Paragraph from '../blurbs/paragraph';
-import Navbar from '../navigation/navbar';
+import Paragraph from '../components/blurbs/paragraph';
+import Navbar from '../components/navigation/navbar';
 
 
 export default class About extends Component {
