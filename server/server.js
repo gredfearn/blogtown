@@ -46,10 +46,10 @@ app.get('*', (req, res) => {
 })
 
 app.use(function(req, res, next) {
-  log.alert(req.method + ' ' + req.url)
+  log.info(req.method + ' ' + req.url)
 });
 
 app.listen(port, function () {
-  log.alert(chalk.green('Blogtown listening at '+port));
+  log.info(chalk.green('Blogtown listening at '+port));
 });
 
