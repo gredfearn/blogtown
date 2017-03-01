@@ -7,7 +7,7 @@ const config = require('../config/config');
 const Log = require('log');
 const log = new Log(config.LOG_LEVEL);
 const port = config.SERVER_PORT;
-const db = require('../lib/db');
+const db = require('../lib/mongo/db');
 
 const serverOptions = {
   name: 'Blog:GrantRedfearn',
@@ -41,8 +41,12 @@ routes.get('/bundle.js', function (req, res) {
 const app = express(serverOptions);
 app.use('/', routes)
 
-const generateBlogRoutes = require('./routes/blog.route');
+const generateBlogRoutes = require('../lib/mongo/routes/blog.route');
 generateBlogRoutes(app);
+
+app.get('*', (req, res) => {
+  res.send('Whatttt?')
+})
 
 app.use(function(req, res, next) {
   log.alert(req.method + ' ' + req.url)
