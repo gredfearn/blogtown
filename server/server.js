@@ -8,11 +8,12 @@ const Log = require('log');
 const log = new Log(config.LOG_LEVEL);
 const port = config.SERVER_PORT;
 const db = require('../lib/mongo/db');
-
+const bodyParser = require('body-parser');
 const serverOptions = {
   name: 'Blog:GrantRedfearn',
   version: '1.0.0'
 };
+
 
 /*********************\
 * CLIENT SIDE ROUTING *
@@ -30,22 +31,18 @@ routes.get('/bundle.js', function (req, res) {
   res.sendFile(bundle + '/bundle.js');
 });
 
-/********************\
-*  DATABASE CONFIG   *
-*********************/
-
-
 /*********************\
 * SERVER SIDE ROUTING *
 **********************/
 const app = express(serverOptions);
+app.use(bodyParser.json());
 app.use('/', routes)
 
 const generateBlogRoutes = require('../lib/mongo/routes/blog.route');
 generateBlogRoutes(app);
 
 app.get('*', (req, res) => {
-  res.send('Whatttt?')
+  res.status(404).send('Nothing to see here... move along.')
 })
 
 app.use(function(req, res, next) {
