@@ -10,8 +10,8 @@ export default class App extends Component {
       <div>
         <Navbar one="Home" two="Blog" three="About" active="1" />
         <MainHeader head="Grant Redfearn" subtext="Software Developer"/>
-        <Paragraph text="This is the first bit of stuff"/>
-        <Paragraph text="This could be used to make another paragraph"/>
+        <p> text="This is the first bit of stuff"</p>
+        <p> text="This could be used to make another paragraph"</p>
       </div>
     );
   }

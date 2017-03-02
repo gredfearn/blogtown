@@ -21,7 +21,6 @@ var Api = {
         var url = "/blog/getBlogs/";
         getBlogs(url)
             .then( result => {
-                console.log('RESULT', result.body.data);
                Dispatcher.dispatch({actionType: Constants.GET_BLOGS, data: result.body.data});
             })
             .catch(err => {

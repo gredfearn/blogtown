@@ -12,8 +12,8 @@ export default class About extends Component {
       <div>
         <Navbar one="Home" two="Blog" three="About" active="3"/>
         <h1>Testing, man.</h1>
-        <Paragraph text="ABOUT ME!"/>
-        <Paragraph text="This is ALL ABOUT ME"/>
+        <h2> text="ABOUT ME!"</h2>
+        <h2> text="This is ALL ABOUT ME"</h2>
       </div>
     );
   }

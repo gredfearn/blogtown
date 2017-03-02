@@ -11,30 +11,37 @@ const Blog = React.createClass({
     return Store.getState();
   },
 
-  componentDidMount() {
+  componentWillMount() {
     AppActions.getBlogPosts();
     Store.addChangeListener(this._onChange);
-    console.log('THIS.STATE', this.state)
   },
 
   _onChange() {
-    this.setState({blogs: Store.getState().blogs});
+    this.setState({blogs: this.state.blogs});
+  },
+
+  componentWillUnmount() {
+    Store.removeChangeListener(this._onChange);
   },
 
 
   render() {
-    console.log('THIS.STATE', this.state);
-    // const { blog } = this.state.blog;
-
-    return (
-      <div>
-        <Navbar one="Home" two="Blog" three="About" active="2"/>
-        <h1>Testing, man.</h1>
-      </div>
-    )
+    const { blogs } = this.state;
+    if(blogs && blogs.length) {
+      return (
+        <div>
+          <Navbar one="Home" two="Blog" three="About" active="2"/>
+          <Paragraph blogs={blogs}/>
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <h1>LOADING</h1>
+        </div>
+        )
+    }
   }
 });
 
 module.exports = Blog;
-
-

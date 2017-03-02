@@ -6,12 +6,11 @@ const CHANGE_EVENT = 'change';
 
 let _state = {};
 
-
-
 const Store = assign({}, EventEmitter.prototype, {
   getState: function() { return _state },
   emitChange: function(actionType) { this.emit(CHANGE_EVENT, actionType); },
   addChangeListener: function(callback) {this.on(CHANGE_EVENT, callback);},
+  removeChangeListener: function(callback) {this.removeListener(CHANGE_EVENT, callback)},
   setBlogs: function setState(data) {_state.blogs = data; }
 });
 
@@ -27,7 +26,5 @@ Dispatcher.register(function(action) {
   Store.emitChange(action.type);
     return true;
 });
-
-
 
 module.exports = Store;
