@@ -4,6 +4,7 @@ import Navbar from '../components/navigation/navbar';
 import request from 'superagent';
 import AppActions from '../actions/App.actions';
 import Store from '../store/App.store';
+import { StyleSheet, css } from 'aphrodite';
 
 const Blog = React.createClass({
 
@@ -37,7 +38,8 @@ const Blog = React.createClass({
     } else {
       return (
         <div>
-          <h1>LOADING</h1>
+          <Navbar one="Home" two="Blog" three="About" active="2"/>
+          <img className={css(styles.loading)} src={'gears.svg'}/>
         </div>
         )
     }
@@ -45,3 +47,13 @@ const Blog = React.createClass({
 });
 
 module.exports = Blog;
+
+const styles = StyleSheet.create({
+  loading: {
+    height: '50%',
+    width: '50%',
+    marginLeft: '25%',
+    marginTop: '15%'
+
+  }
+})

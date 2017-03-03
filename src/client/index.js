@@ -4,7 +4,7 @@ import { Router, Route, hashHistory } from 'react-router';
 import App from './views/app';
 import Blog from './views/blog';
 import About from './views/about';
-
+import Navbar from './components/navigation/navbar';
 render((
   <Router history={hashHistory}>
     <Route path="/" component={App}/>
@@ -12,4 +12,5 @@ render((
     <Route path="/about" component={About}/>
   </Router>
 ), document.getElementById('app'));
+
 

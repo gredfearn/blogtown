@@ -9,6 +9,7 @@
   "author": "Grant Redfearn",
   "license": "ISC",
   "dependencies": {
+    "aphrodite": "^1.1.0",
     "babel-polyfill": "^6.16.0",
     "babel-runtime": "^6.18.0",
     "body-parser": "^1.16.1",
