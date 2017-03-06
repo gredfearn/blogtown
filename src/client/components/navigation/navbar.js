@@ -32,7 +32,6 @@ const styles = StyleSheet.create({
     position: 'fixed',
     top: '0',
     left: '0'
-
   },
   '#app > div > div.containerDiv_1sjvkvp > ul > li.tab_9qu3n0.active > a': {
     backgroundColor: 'pink',

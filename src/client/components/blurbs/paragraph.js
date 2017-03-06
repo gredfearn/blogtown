@@ -26,7 +26,7 @@ class Paragraph extends Component {
 function textTrimmer(text) {
   let trim = text;
   if(text.length > 1000) {
-   trim = text.substring(0,650)
+   trim = text.substring(0,1000)
   }
   return trim + '...'
  }
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   outter: {
     backgroundColor: 'white',
     width: '80%',
-    height: '20%'
+    height: '25%'
   },
   container: {
     marginTop:'10px',
